@@ -1,0 +1,18 @@
+services:
+  scraper:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.dev
+    ports:
+      - "5000:5000"
+    environment:
+      - NODE_ENV=development
+    volumes:
+      - .:/usr/src/app
+    cap_add:
+      - SYS_ADMIN
+    init: true
+
+volumes:
+  scraper.vol:
+    driver: local

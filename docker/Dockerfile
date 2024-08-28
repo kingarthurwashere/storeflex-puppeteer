@@ -1,0 +1,17 @@
+# Use the official Puppeteer Docker image as a base
+FROM ghcr.io/puppeteer/puppeteer:latest
+
+# Set the working directory inside the container
+WORKDIR /usr/src/app
+
+# Copy the rest of the application code to the working directory
+COPY . .
+
+# Install dependencies
+RUN npm install
+
+# Expose the port that your app runs on
+EXPOSE 5000
+
+# Start the application in development mode
+CMD ["npm", "run", "start"]
